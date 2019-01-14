@@ -26,15 +26,19 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/index.css">
+<!-- <script src="js/index.js"></script> -->
 </head>
 <body>
-	<h1>Administration des sondages :</h1>
-	<a class="btn btn-danger" href="deleteChoco.html?id=${choco.id}">Supprimer</a>
-	<a class="btn btn-primary" href="admin.html?id=${choco.id}">Modifier</a>
-	<button class="btn btn-primary">Créer un sondage</button>
-	<button type="reset" class="btn btn-warning">Arrêter un
-		sondage</button>
-	<a class="chocoNew btn btn-secondary" href="admin.html">Visualiser
-		les retours des sondages</a>
+	<div class="presentation">
+		<h1>Administration des sondages</h1>
+		<a class="btn btn-outline-success"
+			href="deleteChoco.html?id=${choco.id}">Créer un sondage</a><br>
+		<br> <a class="btn btn-outline-danger"
+			href="admin.html?id=${choco.id}">Arrêter un sondage</a><br>
+		<br> <a class="btn btn-outline-primary"
+			href="admin.html?id=${choco.id}">Visualiser les retours des
+			sondages</a><br>
+	</div>
 </body>
 </html>
