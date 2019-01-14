@@ -32,6 +32,13 @@
 <body>
 	<div class="presentation">
 		<h1>Administration des sondages</h1>
+		<c:if test="${ empty survey }">
+		<h2>Pas de sondage en cours</h2>
+		</c:if>
+		<c:if test="${not empty survey }">
+		<h2> le sondage a débuté le ${survey.beginDate} et finit le ${survey.supposedFinishDate }
+		</h2>
+		</c:if>
 		<a class="btn btn-outline-success"
 			href="createsurvey.html">Créer un sondage</a><br>
 		<br> <a class="btn btn-outline-danger"
