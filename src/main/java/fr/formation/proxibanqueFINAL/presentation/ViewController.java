@@ -125,7 +125,10 @@ public class ViewController {
 
 	@RequestMapping("stopsurvey")
 	public String stopsurvey(@RequestParam Integer id) {
-		this.surveyService.delete(id);
+		Survey survey = new Survey();
+		
+		survey = this.surveyService.read(id);
+		survey.setEndDate(LocalDate.now());
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
