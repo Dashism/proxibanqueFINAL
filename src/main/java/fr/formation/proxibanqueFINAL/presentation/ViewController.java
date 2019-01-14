@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
 import fr.formation.proxibanqueFINAL.metier.OpinionService;
 import fr.formation.proxibanqueFINAL.metier.Survey;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
-import fr.formation.proxibanqueFINAL.presentation.rest.SurveyWebService;
 
 /**
  * Controleur des vues responsable de distribuer les bons objets vues/model pour
@@ -52,9 +52,6 @@ public class ViewController {
 
 	@Autowired
 	private SurveyService surveyService;
-	
-	@Autowired
-	private SurveyWebService surveyWebService; 
 
 	/**
 	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
@@ -86,29 +83,27 @@ public class ViewController {
 	@RequestMapping("createsurvey")
 	public ModelAndView createsurvey() {
 		ModelAndView mav = new ModelAndView();
-		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
-		// conservée en session (grâce à l'annotation sur la classe).
-		// 1. Configurer la vue.
 		mav.setViewName("createsurvey");
-		// 2. Ajouter les données nécessaires à la vue.
-//		mav.addObject("survey", this.surveyService.read(id));
+		mav.addObject("survey", new Survey());
 		return mav;
 	}
-	
-	
+
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
-	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
-		ModelAndView mav = new ModelAndView("createsurvey");
-		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré",beginDate, supposedFinishDate
-			);
-		Survey survey = new Survey();
-		survey.setBeginDate(beginDate);
-		survey.setSupposedFinishDate(supposedFinishDate);
-		
-		mav.addObject("message", message);
-		return mav;
+	public String validateForm(Survey survey, RedirectAttributes attributes ) {
+		String message = null;
+		// Si l'identifiant est null alors on peut effectuer la création, et si
+		// la création
+		// renvoie vrai alors on met le message de succès, sinon on passe au
+		// else if suivant.
+		// Utilisation des attributs flash de redirection (pas visible dans
+		// l'URL, contrairement aux attributs de redirection normaux).
+		// Le message sera reçu par le nouveau paramètre "message" de la méthode
+		// index (ciblée par la redirection).
+		attributes.addFlashAttribute("message", message);
+		// On change pour un type de retour String permettant de renvoyer
+		// uniquement le nom de vue de redirection.
+		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
-	
 
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
@@ -118,8 +113,12 @@ public class ViewController {
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
+
 		mav.addObject("surveys" , this.surveyService.readAll());
 		mav.addObject("percentages" , this.surveyService.getOpinionStats(survey));
+
+
+
 		// 2. Ajouter les données nécessaires à la vue.
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
@@ -128,7 +127,6 @@ public class ViewController {
 	@RequestMapping("stopsurvey")
 	public String stopsurvey(@RequestParam Integer id) {
 		Survey survey = new Survey();
-		
 		survey = this.surveyService.read(id);
 		survey.setEndDate(LocalDate.now());
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
