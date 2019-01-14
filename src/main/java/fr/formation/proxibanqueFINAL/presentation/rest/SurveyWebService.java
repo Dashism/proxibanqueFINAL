@@ -52,8 +52,8 @@ public class SurveyWebService {
 //		return this.service.update(survey);
 //	}
 
-	@GetMapping("/{id}")
-	public Survey getCurrentSurvey() {
+	@GetMapping("/{beginDate}")
+	public Survey getCurrentSurvey(@PathVariable LocalDate beginDate) {
 		return this.service.getCurrentSurvey();
 
 	}

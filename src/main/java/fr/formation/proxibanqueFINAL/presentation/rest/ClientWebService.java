@@ -52,9 +52,8 @@ public class ClientWebService {
 //		return this.service.update(client);
 //	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{serialNumber}")
 	public Client getSerialNumber(@PathVariable String serialNumber) {
 		return this.service.getSerialNumber(serialNumber);
-		
 	}
 }
