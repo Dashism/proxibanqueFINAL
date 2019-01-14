@@ -113,12 +113,13 @@ public class ViewController {
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
 		ModelAndView mav = new ModelAndView();
+		Survey survey = new Survey();
 		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
 		mav.addObject("surveys" , this.surveyService.readAll());
-		mav.addObject("percentage" , this.surveyService.getOpinionStats());
+		mav.addObject("percentages" , this.surveyService.getOpinionStats(survey));
 		// 2. Ajouter les données nécessaires à la vue.
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;

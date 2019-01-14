@@ -39,7 +39,7 @@
 
 
 					<h2>Date de début : ${survey.beginDate} Date de fin : ${survey.supposedFinishDate}</h2>
-					<h2>${survey.percentage }</h2>
+					<h2>${percentage }</h2>
 
 				</div>
 			</c:forEach>
