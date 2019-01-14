@@ -18,8 +18,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.formation.blog.BlogConstants;
-import fr.formation.blog.metier.Article;
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
 import fr.formation.proxibanqueFINAL.metier.OpinionService;
