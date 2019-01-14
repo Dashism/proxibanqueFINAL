@@ -29,7 +29,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/createsurvey.css">
 </head>
-<body>
+<body background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
 		<h1>Créer un sondage</h1>
 		<div class="presentation2">
