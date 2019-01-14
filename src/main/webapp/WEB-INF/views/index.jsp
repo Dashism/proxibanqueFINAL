@@ -29,16 +29,16 @@
 <link rel="stylesheet" href="css/index.css">
 <!-- <script src="js/index.js"></script> -->
 </head>
-<body>
+<body background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
-		<h1>Administration des sondages</h1>
+		<h1>Administration des sondages</h1><br>
 		<c:if test="${ empty survey }">
 		<h2>Pas de sondage en cours</h2>
 		</c:if>
 		<c:if test="${not empty survey }">
-		<h2> le sondage a débuté le ${survey.beginDate} et finit le ${survey.supposedFinishDate }
+		<h2>Le sondage a débuté le ${survey.beginDate} et finit le ${survey.supposedFinishDate }
 		</h2>
-		</c:if>
+		</c:if><br><br><br><br><br><br><br><br>
 		<a class="btn btn-outline-success"
 			href="createsurvey.html">Créer un sondage</a><br>
 		<br> <a class="btn btn-outline-danger"
