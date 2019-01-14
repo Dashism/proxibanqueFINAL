@@ -53,7 +53,7 @@ public class ViewController {
 
 	@Autowired
 	private SurveyService surveyService;
-	
+
 	@Autowired
 	private SurveyWebService surveyWebService;
 
@@ -95,21 +95,19 @@ public class ViewController {
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
 	}
-	
-	
-	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
-	public String validateForm(Survey survey, RedirectAttributes attributes) {
-		String message = null;
-		if (this.surveyService.create(survey) != null) {
-			message = "Survey bien ajouté !";
-		} else {
-			message = "Erreur : survey non ajouté...";
-		}
-		attributes.addFlashAttribute("message", message);
-		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
-	}
 
-	
+	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
+	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
+		ModelAndView mav = new ModelAndView("createsurvey");
+		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré", beginDate,
+				supposedFinishDate);
+		Survey survey = new Survey();
+		survey.setBeginDate(beginDate);
+		survey.setSupposedFinishDate(supposedFinishDate);
+		mav.addObject("message", message);
+		return mav;
+
+	}
 
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
@@ -118,7 +116,8 @@ public class ViewController {
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
-		mav.addObject("surveys" , this.surveyService.readAll());
+		mav.addObject("surveys", this.surveyService.readAll());
+		mav.addObject("percentage", this.surveyService.getOpinionStats());
 		// 2. Ajouter les données nécessaires à la vue.
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;

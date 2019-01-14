@@ -57,5 +57,11 @@ public class SurveyWebService {
 		return this.service.getCurrentSurvey();
 
 	}
+	
+	@GetMapping("/{id}")
+	public Float getStats() {
+		return this.service.getOpinionStats();
+	}
+	
 
 }
