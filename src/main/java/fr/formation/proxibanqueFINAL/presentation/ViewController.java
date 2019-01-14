@@ -18,6 +18,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.formation.blog.BlogConstants;
+import fr.formation.blog.metier.Article;
+import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
 import fr.formation.proxibanqueFINAL.metier.OpinionService;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
@@ -57,8 +60,8 @@ public class ViewController {
 	private SurveyService surveyService;
 
 	/**
-	 * Répond sur "http://localhost:8080/blog/" et
-	 * "http://localhost:8080/blog/index.html".
+	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
+	 * "http://localhost:8080/proxibanqueFINAL/index.html".
 	 * 
 	 * @return ModelAndView la vue index.
 	 */
@@ -73,4 +76,40 @@ public class ViewController {
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
 	}
+	
+	/**
+	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
+	 * "http://localhost:8080/proxibanqueFINAL/index.html".
+	 * 
+	 * @return ModelAndView la vue index.
+	 */
+	@RequestMapping("createsurvey")
+	public ModelAndView createsurvey(Integer id) {
+		ModelAndView mav = new ModelAndView();
+		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
+		// conservée en session (grâce à l'annotation sur la classe).
+		// 1. Configurer la vue.
+		mav.setViewName("createsurvey");
+		// 2. Ajouter les données nécessaires à la vue.
+//		mav.addObject("survey", this.surveyService.read(id));
+		return mav;
+	}
+	
+	@RequestMapping("listsurvey")
+	public ModelAndView listsurvey(Integer id) {
+		ModelAndView mav = new ModelAndView();
+		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
+		// conservée en session (grâce à l'annotation sur la classe).
+		// 1. Configurer la vue.
+		mav.setViewName("listsurvey");
+		// 2. Ajouter les données nécessaires à la vue.
+//		mav.addObject("survey", this.surveyService.read(id));
+		return mav;
+	}
+	
+	@RequestMapping("stopsurvey")
+	public String stopsurvey(Integer id) {
+		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
+	}
+	
 }
