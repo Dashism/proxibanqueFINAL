@@ -3,6 +3,7 @@ package fr.formation.proxibanqueFINAL.presentation;
 import java.time.LocalDate;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,9 +69,11 @@ public class ViewController {
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("index");
-
 		// 2. Ajouter les données nécessaires à la vue.
-		mav.addObject("survey", this.surveyService.getCurrentSurvey());
+		Survey survey = new Survey();
+		survey = this.surveyService.getCurrentSurvey();
+		Hibernate.initialize(survey);
+		mav.addObject("survey", survey);
 		return mav;
 	}
 
