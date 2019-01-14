@@ -33,7 +33,11 @@
 	<div class="presentation">
 		<h1>Administration des sondages</h1>
 		<a class="btn btn-outline-success"
+<<<<<<< HEAD
 			href="createsurvey.html">Créer un sondage</a><br>
+=======
+			href="deleteChoco.html?id=${choco}.id">Créer un sondage</a><br>
+>>>>>>> 734f9987b1959e21d24b910a6c2a0684c99613ea
 		<br> <a class="btn btn-outline-danger"
 			href="stopsurvey.html?id=${survey.id}">Arrêter un sondage</a><br>
 		<br> <a class="btn btn-outline-primary"
