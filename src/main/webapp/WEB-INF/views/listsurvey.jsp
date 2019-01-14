@@ -37,6 +37,7 @@
 				<div class="survey" onmouseenter="enterDiv(event)"
 					onmouseleave="leaveDiv(event)">
 					<h2>${survey.beginDate} ${survey.supposedFinishDate}</h2>
+					
 				</div>
 			</c:forEach>
 			<a class="btn btn-outline-info" href="index.html">Retour</a>

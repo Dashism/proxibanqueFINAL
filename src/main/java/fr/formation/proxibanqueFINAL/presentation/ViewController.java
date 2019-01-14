@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
@@ -97,17 +98,17 @@ public class ViewController {
 	
 	
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
-	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
-		ModelAndView mav = new ModelAndView("eshop");
-		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré",beginDate, supposedFinishDate
-			);
-		Survey survey = new Survey();
-		survey.setBeginDate(beginDate);
-		survey.setSupposedFinishDate(supposedFinishDate);
-		this.surveyService.create(survey);
-		mav.addObject("message", message);
-		return mav;
+	public String validateForm(Survey survey, RedirectAttributes attributes) {
+		String message = null;
+		if (this.surveyService.create(survey) != null) {
+			message = "Survey bien ajouté !";
+		} else {
+			message = "Erreur : survey non ajouté...";
+		}
+		attributes.addFlashAttribute("message", message);
+		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
+
 	
 
 	@RequestMapping("listsurvey")
@@ -126,7 +127,6 @@ public class ViewController {
 	@RequestMapping("stopsurvey")
 	public String stopsurvey(@RequestParam Integer id) {
 		Survey survey = new Survey();
-		
 		survey = this.surveyService.read(id);
 		survey.setEndDate(LocalDate.now());
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;

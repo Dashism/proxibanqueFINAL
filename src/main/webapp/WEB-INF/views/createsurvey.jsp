@@ -34,26 +34,26 @@
 		<h1>Créer un sondage</h1>
 		<div class="presentation2">
 			<!-- Utilisation d'un tag Spring pour lier le formulaire à un objet Java de la classe Article. -->
-			<form modelAttribute="survey" method="post" action="listsurvey.html"
+			<form:form modelAttribute="survey" method="post" action="listsurvey.html"
 				onsubmit="validateForm(event)">
 				<div class="form-group">
 					<label for="beginDate">Date de début :</label>
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
-					<input id="beginDate" path="beginDate" class="form-control" />
+					<form:input id="beginDate" path="beginDate" class="form-control" />
 				</div>
 				<div class="form-group">
 					<label for="supposedFinishDate">Date de fin prévisionnelle
 						:</label>
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
-					<input id="supposedFinishDate" path="supposedFinishDate"
+					<form:input id="supposedFinishDate" path="supposedFinishDate"
 						class="form-control" />
 				</div>
 				<a class="btn btn-outline-success"
 					href="validatesurvey.html?id=${survey.id}">Valider le nouveau
 					sondage</a> <a class="btn btn-outline-info" href="index.html">Retour</a>
-			</form>
+			</form:form>
 		</div>
 	</div>
 </body>
