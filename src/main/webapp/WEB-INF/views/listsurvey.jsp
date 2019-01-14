@@ -35,7 +35,7 @@
 			<c:forEach var="survey" items="${surveys}">
 				<div class="survey" onmouseenter="enterDiv(event)"
 					onmouseleave="leaveDiv(event)">
-					<h2>${survey.beginDate} ${survey.supposedFinishDate}</h2>
+					<h2>${survey.beginDate} ${survey.supposedFinishDate} ${survey.percentage }</h2>
 				</div>
 			</c:forEach>
 			<a class="btn btn-outline-info" href="index.html">Retour</a>

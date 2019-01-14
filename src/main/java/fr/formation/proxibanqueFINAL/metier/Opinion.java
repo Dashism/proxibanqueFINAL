@@ -35,4 +35,76 @@ public class Opinion {
 	@ManyToOne
 	@JoinColumn(name="id_survey", referencedColumnName="id")
 	private Survey survey;
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the commentary
+	 */
+	public String getCommentary() {
+		return commentary;
+	}
+
+	/**
+	 * @param commentary the commentary to set
+	 */
+	public void setCommentary(String commentary) {
+		this.commentary = commentary;
+	}
+
+	/**
+	 * @return the isThumbs
+	 */
+	public Boolean getIsThumbs() {
+		return isThumbs;
+	}
+
+	/**
+	 * @param isThumbs the isThumbs to set
+	 */
+	public void setIsThumbs(Boolean isThumbs) {
+		this.isThumbs = isThumbs;
+	}
+
+	/**
+	 * @return the client
+	 */
+	public Client getClient() {
+		return client;
+	}
+
+	/**
+	 * @param client the client to set
+	 */
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	/**
+	 * @return the survey
+	 */
+	public Survey getSurvey() {
+		return survey;
+	}
+
+	/**
+	 * @param survey the survey to set
+	 */
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
+	
+	
 }

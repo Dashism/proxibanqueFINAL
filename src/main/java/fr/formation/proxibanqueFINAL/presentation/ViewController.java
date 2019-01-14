@@ -54,7 +54,7 @@ public class ViewController {
 	private SurveyService surveyService;
 	
 	@Autowired
-	private SurveyWebService surveyWebService;
+	private SurveyWebService surveyWebService; 
 
 	/**
 	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
@@ -104,7 +104,7 @@ public class ViewController {
 		Survey survey = new Survey();
 		survey.setBeginDate(beginDate);
 		survey.setSupposedFinishDate(supposedFinishDate);
-		this.surveyService.create(survey);
+		
 		mav.addObject("message", message);
 		return mav;
 	}
@@ -118,6 +118,7 @@ public class ViewController {
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
 		mav.addObject("surveys" , this.surveyService.readAll());
+		mav.addObject("percentage" , this.surveyService.getOpinionStats());
 		// 2. Ajouter les données nécessaires à la vue.
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
