@@ -34,4 +34,6 @@ public class ClientService extends RestService<Client> {
 		}
 		return currentClient;
 	}	
+	
+
 }

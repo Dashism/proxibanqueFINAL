@@ -15,7 +15,7 @@ import fr.formation.proxibanqueFINAL.metier.Client;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
 
 @RestController
-@RequestMapping("/Client")
+@RequestMapping("/client")
 @Transactional(readOnly=true)
 //@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"})
 public class ClientWebService {
