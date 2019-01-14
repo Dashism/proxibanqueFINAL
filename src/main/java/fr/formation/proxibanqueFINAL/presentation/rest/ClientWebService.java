@@ -54,17 +54,7 @@ public class ClientWebService {
 	
 	@GetMapping("/{id}")
 	public Client getSerialNumber(@PathVariable String serialNumber) {
-		Client currentClient = null;
-		List<Client> clients = new ArrayList<>();
-		clients = this.service.readAll();
-		for(Client client : clients) {
-			if(
-		client.getSerialNumber().equals(serialNumber)) {
-				currentClient = client;
-			}
-		}
+		return this.service.getSerialNumber(serialNumber);
 		
-		Hibernate.initialize(currentClient);
-		return currentClient;
 	}
 }

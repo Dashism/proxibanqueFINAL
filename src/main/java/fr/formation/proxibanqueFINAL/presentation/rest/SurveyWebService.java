@@ -53,17 +53,8 @@ public class SurveyWebService {
 //	}
 
 	@GetMapping("/{id}")
-	public Survey getCurrentSurvey(@PathVariable Integer id) {
-		Survey currentSurvey = null;
-		List<Survey> surveys = this.service.readAll();
-		for (Survey survey : surveys) {
-			if (survey.getBeginDate().isBefore(LocalDate.now()) && survey.getEndDate().isAfter(LocalDate.now())) {
-				currentSurvey = survey;
-			}
-		}
-
-		Hibernate.initialize(currentSurvey);
-		return currentSurvey;
+	public Survey getCurrentSurvey() {
+		return this.service.getCurrentSurvey();
 
 	}
 
