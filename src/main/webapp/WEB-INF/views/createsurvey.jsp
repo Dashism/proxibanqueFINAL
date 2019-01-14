@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -29,12 +28,12 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/createsurvey.css">
 </head>
-<body background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
+<body
+	background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
 		<h1>Créer un sondage</h1>
 		<div class="presentation2">
-			<!-- Utilisation d'un tag Spring pour lier le formulaire à un objet Java de la classe Article. -->
-			<form:form modelAttribute="survey" method="post" action="listsurvey.html"
+			<form:form modelAttribute="survey" method="post" action="createsurvey.html"
 				onsubmit="validateForm(event)">
 				<div class="form-group">
 					<label for="beginDate">Date de début :</label>
@@ -48,11 +47,11 @@
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
 					<form:input id="supposedFinishDate" path="supposedFinishDate"
-						class="form-control" />
+						class="form-control"></form:input>
 				</div>
-				<a class="btn btn-outline-success"
-					href="validatesurvey.html?id=${survey.id}">Valider le nouveau
-					sondage</a> <a class="btn btn-outline-info" href="index.html">Retour</a>
+						<button>Valider</button>
+				<a class="btn btn-outline-success">Valider le nouveau sondage</a>
+			<a class="btn btn-outline-info" href="index.html">Retour</a>
 			</form:form>
 		</div>
 	</div>

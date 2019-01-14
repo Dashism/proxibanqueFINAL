@@ -54,9 +54,6 @@ public class ViewController {
 	@Autowired
 	private SurveyService surveyService;
 
-	@Autowired
-	private SurveyWebService surveyWebService;
-
 	/**
 	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
 	 * "http://localhost:8080/proxibanqueFINAL/index.html".
@@ -87,26 +84,26 @@ public class ViewController {
 	@RequestMapping("createsurvey")
 	public ModelAndView createsurvey() {
 		ModelAndView mav = new ModelAndView();
-		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
-		// conservée en session (grâce à l'annotation sur la classe).
-		// 1. Configurer la vue.
 		mav.setViewName("createsurvey");
-		// 2. Ajouter les données nécessaires à la vue.
-//		mav.addObject("survey", this.surveyService.read(id));
+		mav.addObject("survey", new Survey());
 		return mav;
 	}
 
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
-	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
-		ModelAndView mav = new ModelAndView("createsurvey");
-		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré", beginDate,
-				supposedFinishDate);
-		Survey survey = new Survey();
-		survey.setBeginDate(beginDate);
-		survey.setSupposedFinishDate(supposedFinishDate);
-		mav.addObject("message", message);
-		return mav;
-
+	public String validateForm(Survey survey, RedirectAttributes attributes ) {
+		String message = null;
+		// Si l'identifiant est null alors on peut effectuer la création, et si
+		// la création
+		// renvoie vrai alors on met le message de succès, sinon on passe au
+		// else if suivant.
+		// Utilisation des attributs flash de redirection (pas visible dans
+		// l'URL, contrairement aux attributs de redirection normaux).
+		// Le message sera reçu par le nouveau paramètre "message" de la méthode
+		// index (ciblée par la redirection).
+		attributes.addFlashAttribute("message", message);
+		// On change pour un type de retour String permettant de renvoyer
+		// uniquement le nom de vue de redirection.
+		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
 	@RequestMapping("listsurvey")
