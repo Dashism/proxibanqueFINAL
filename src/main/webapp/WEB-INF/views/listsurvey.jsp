@@ -8,7 +8,7 @@
 <!-- Cette balise gère les méta-données de la page, 
 	toute les caractéristiques propres à la page. -->
 <meta charset="ISO-8859-1">
-<title>Boutique</title>
+<title>listsurvey</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -26,19 +26,21 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/index.css">
-<!-- <script src="js/index.js"></script> -->
+<link rel="stylesheet" href="css/listsurvey.css">
 </head>
 <body>
 	<div class="presentation">
-		<h1>Administration des sondages</h1>
-		<a class="btn btn-outline-success"
-			href="createsurvey.html">Créer un sondage</a><br>
-		<br> <a class="btn btn-outline-danger"
-			href="stopsurvey.html?id=${survey.id}">Arrêter un sondage</a><br>
-		<br> <a class="btn btn-outline-primary"
-			href="listsurvey.html?id=${survey.id}">Visualiser les retours des
-			sondages</a><br>
+		<h1>Liste des Sondages :</h1>
+		<div>
+			<c:forEach var="survey" items="${surveys}">
+				<div class="survey" onmouseenter="enterDiv(event)"
+					onmouseleave="leaveDiv(event)">
+					<h2>
+						${survey.beginDate} ${survey.supposedFinishDate} 
+					</h2>
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>

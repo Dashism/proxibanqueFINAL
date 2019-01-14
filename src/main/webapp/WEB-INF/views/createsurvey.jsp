@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +9,7 @@
 <!-- Cette balise gère les méta-données de la page, 
 	toute les caractéristiques propres à la page. -->
 <meta charset="ISO-8859-1">
-<title>Boutique</title>
+<title>createsurvey</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -26,19 +27,34 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/index.css">
-<!-- <script src="js/index.js"></script> -->
+<link rel="stylesheet" href="css/createsurvey.css">
 </head>
 <body>
 	<div class="presentation">
-		<h1>Administration des sondages</h1>
-		<a class="btn btn-outline-success"
-			href="createsurvey.html">Créer un sondage</a><br>
-		<br> <a class="btn btn-outline-danger"
-			href="stopsurvey.html?id=${survey.id}">Arrêter un sondage</a><br>
-		<br> <a class="btn btn-outline-primary"
-			href="listsurvey.html?id=${survey.id}">Visualiser les retours des
-			sondages</a><br>
+		<h1>Créer un sondage</h1>
+		<div class="presentation2">
+			<!-- Utilisation d'un tag Spring pour lier le formulaire à un objet Java de la classe Article. -->
+			<form modelAttribute="survey" method="post" action="listsurvey.html"
+				onsubmit="validateForm(event)">
+				<div class="form-group">
+					<label for="beginDate">Date de début :</label>
+					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
+				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
+					<input id="beginDate" path="beginDate" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label for="supposedFinishDate">Date de fin prévisionnelle
+						:</label>
+					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
+				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
+					<input id="supposedFinishDate" path="supposedFinishDate"
+						class="form-control" />
+				</div>
+				<a class="btn btn-outline-success"
+					href="validatesurvey.html?id=${survey.id}">Valider le nouveau
+					sondage</a> <a class="btn btn-outline-info" href="index.html">Retour</a>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
