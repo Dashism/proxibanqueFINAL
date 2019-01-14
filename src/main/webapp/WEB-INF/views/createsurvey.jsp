@@ -27,30 +27,34 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/createsurvey.css">
 </head>
 <body>
 	<div class="presentation">
 		<h1>Créer un sondage</h1>
-		<!-- Utilisation d'un tag Spring pour lier le formulaire à un objet Java de la classe Article. -->
-		<form modelAttribute="survey" method="post" action="listsurvey.html"
-			onsubmit="validateForm(event)">
-			<div class="form-group">
-				<label for="beginDate">Date de début :</label>
-				<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
+		<div class="presentation2">
+			<!-- Utilisation d'un tag Spring pour lier le formulaire à un objet Java de la classe Article. -->
+			<form modelAttribute="survey" method="post" action="listsurvey.html"
+				onsubmit="validateForm(event)">
+				<div class="form-group">
+					<label for="beginDate">Date de début :</label>
+					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
-				<input id="beginDate" path="beginDate" class="form-control" />
-			</div>
-			<div class="form-group">
-				<label for="supposedFinishDate">Date de fin prévisionnelle :</label>
-				<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
+					<input id="beginDate" path="beginDate" class="form-control" />
+				</div>
+				<div class="form-group">
+					<label for="supposedFinishDate">Date de fin prévisionnelle
+						:</label>
+					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
-				<input id="supposedFinishDate" path="supposedFinishDate"
-					class="form-control" />
-			</div>
-			<button>Valider</button>
-			<a href="index.html">Retour à l'accueil</a>
-		</form>
+					<input id="supposedFinishDate" path="supposedFinishDate"
+						class="form-control" />
+				</div>
+				<a class="btn btn-outline-success"
+					href="validatesurvey.html?id=${survey.id}">Valider le nouveau
+					sondage</a> <a class="btn btn-outline-info" href="index.html">Retour</a>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
