@@ -37,7 +37,12 @@
 				<div class="survey" onmouseenter="enterDiv(event)"
 					onmouseleave="leaveDiv(event)">
 					<h2>Date de début : ${survey.beginDate} Date de fin : ${survey.supposedFinishDate}</h2>
+<<<<<<< HEAD
+					<h2>${percentage }</h2>
+
+=======
 					<h2>${percentage}</h2>
+>>>>>>> 37a88227de53528d094b2a4a23d4f4fc5365d4c9
 				</div>
 			</c:forEach>
 			<a class="btn btn-outline-info" href="index.html">Retour</a>

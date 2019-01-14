@@ -40,16 +40,15 @@ public class SurveyService extends RestService<Survey> {
 
 	}
 	
-	public float getOpinionStats() {
-		Survey survey = getCurrentSurvey();
+	public float getOpinionStats(Survey survey) {
 		List<Opinion> opinions = survey.getOpinions();
 		Integer count = 0;
 		for (Opinion opinion : opinions) {
-			if (opinion.getIsThumbs() == true) {
+			if (opinion.getIsThumbs().equals("1") ) {
 				count++;
 			}
 		}
-		float stats = count / opinions.size();
+		float stats = (float) count /(float) opinions.size();
 		return stats;
 	}
 

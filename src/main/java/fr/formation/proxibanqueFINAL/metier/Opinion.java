@@ -26,7 +26,7 @@ public class Opinion {
 	private String commentary;
 	
 	@Column
-	private Boolean isThumbs;
+	private String isThumbs;
 	
 	@OneToOne
 	@JoinColumn(name="id_client", referencedColumnName="id")
@@ -67,14 +67,14 @@ public class Opinion {
 	/**
 	 * @return the isThumbs
 	 */
-	public Boolean getIsThumbs() {
+	public String getIsThumbs() {
 		return isThumbs;
 	}
 
 	/**
 	 * @param isThumbs the isThumbs to set
 	 */
-	public void setIsThumbs(Boolean isThumbs) {
+	public void setIsThumbs(String isThumbs) {
 		this.isThumbs = isThumbs;
 	}
 
