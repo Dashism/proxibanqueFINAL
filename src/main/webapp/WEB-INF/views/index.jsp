@@ -29,23 +29,36 @@
 <link rel="stylesheet" href="css/index.css">
 <!-- <script src="js/index.js"></script> -->
 </head>
-<body background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
+<body
+	background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
-		<h1>Administration des sondages</h1><br>
+		<h1>Administration des sondages</h1>
+		<br>
 		<c:if test="${ empty survey }">
-		<h2>Pas de sondage en cours</h2>
+			<h2>Pas de sondage en cours</h2>
 		</c:if>
 		<c:if test="${not empty survey }">
-		<h2>Le sondage a débuté le ${survey.beginDate} et finit le ${survey.supposedFinishDate }
-		</h2>
-		</c:if><br><br><br><br><br><br><br><br>
-		<a class="btn btn-outline-success"
-			href="createsurvey.html">Créer un sondage</a><br>
-		<br> <a class="btn btn-outline-danger"
-			href="stopsurvey.html?id=${survey.id}">Arrêter un sondage</a><br>
-		<br> <a class="btn btn-outline-primary"
+			<h2>Le sondage a débuté le ${survey.beginDate} et finit le
+				${survey.supposedFinishDate }</h2>
+		</c:if>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>
+		<c:if test="${ empty survey }">
+			<a class="btn btn-outline-success" href="createsurvey.html">Créer
+				un sondage</a>
+			<br>
+			<br>
+		</c:if>
+
+		<c:if test="${not empty survey }">
+			<a class="btn btn-outline-danger"
+				href="stopsurvey.html?id=${survey.id}">Arrêter un sondage</a>
+			<br>
+			<br>
+		</c:if>
+		<a class="btn btn-outline-primary"
 			href="listsurvey.html?id=${survey.id}">Visualiser les retours des
-			sondages</a><br>
+			sondages</a> <br>
 	</div>
 </body>
 </html>
