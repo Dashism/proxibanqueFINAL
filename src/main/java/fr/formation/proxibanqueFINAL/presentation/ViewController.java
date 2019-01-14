@@ -98,7 +98,7 @@ public class ViewController {
 	
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
 	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
-		ModelAndView mav = new ModelAndView("eshop");
+		ModelAndView mav = new ModelAndView("createsurvey");
 		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré",beginDate, supposedFinishDate
 			);
 		Survey survey = new Survey();
