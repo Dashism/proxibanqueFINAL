@@ -1,19 +1,14 @@
 package fr.formation.proxibanqueFINAL.presentation.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.proxibanqueFINAL.metier.Client;
@@ -58,9 +53,18 @@ public class ClientWebService {
 //	}
 	
 	@GetMapping("/{id}")
-	public Client getSerialNumber(@PathVariable Integer id) {
-		Client client = this.service.read(id);
-		Hibernate.initialize(client);
-		return client;
+	public Client getSerialNumber(@PathVariable String serialNumber) {
+		Client currentClient = null;
+		List<Client> clients = new ArrayList<>();
+		clients = this.service.readAll();
+		for(Client client : clients) {
+			if(
+		client.getSerialNumber().equals(serialNumber)) {
+				currentClient = client;
+			}
+		}
+		
+		Hibernate.initialize(currentClient);
+		return currentClient;
 	}
 }

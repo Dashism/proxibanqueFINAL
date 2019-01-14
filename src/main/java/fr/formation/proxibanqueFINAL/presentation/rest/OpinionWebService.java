@@ -28,32 +28,32 @@ public class OpinionWebService {
 	@Autowired
 	private OpinionService service;
 	
-	@GetMapping
-	public List<Opinion> list() {
-		return this.service.readAll();
-	}
-	
+//	@GetMapping
+//	public List<Opinion> list() {
+//		return this.service.readAll();
+//	}
+//	
 	@PostMapping
 	public Opinion create(@RequestBody Opinion opinion) {
 		return this.service.create(opinion);
 	}
 	
-	@GetMapping("/{id}")
-	public Opinion read(@PathVariable Integer id) {
-		Opinion opinion = this.service.read(id);
-		Hibernate.initialize(opinion);
-		return opinion;
-	}
+//	@GetMapping("/{id}")
+//	public Opinion read(@PathVariable Integer id) {
+//		Opinion opinion = this.service.read(id);
+//		Hibernate.initialize(opinion);
+//		return opinion;
+//	}
 	
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
-		this.service.delete(id);
-	}
-	
-	@PutMapping("/{id}")
-	public Opinion update(@PathVariable Integer id,
-			@RequestBody Opinion opinion) {
-		return this.service.update(opinion);
-	}
+//	@DeleteMapping("/{id}")
+//	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public void delete(@PathVariable Integer id) {
+//		this.service.delete(id);
+//	}
+//	
+//	@PutMapping("/{id}")
+//	public Opinion update(@PathVariable Integer id,
+//			@RequestBody Opinion opinion) {
+//		return this.service.update(opinion);
+//	}
 }
