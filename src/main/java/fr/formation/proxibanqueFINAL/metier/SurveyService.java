@@ -25,7 +25,7 @@ public class SurveyService extends RestService<Survey> {
 		Survey currentSurvey = null;
 		List<Survey> surveys = this.dao.findAll();
 		for (Survey survey : surveys) {
-			if (survey.getBeginDate().isBefore(LocalDate.now()) && survey.getEndDate().isAfter(LocalDate.now())) {
+			if (survey.getBeginDate().isBefore(LocalDate.now()) && survey.getSupposedFinishDate().isAfter(LocalDate.now())) {
 				currentSurvey = survey;
 			}
 		}
