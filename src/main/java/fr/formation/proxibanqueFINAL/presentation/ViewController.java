@@ -1,15 +1,20 @@
 package fr.formation.proxibanqueFINAL.presentation;
 
+import java.time.LocalDate;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
 import fr.formation.proxibanqueFINAL.metier.OpinionService;
+import fr.formation.proxibanqueFINAL.metier.Survey;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
 import fr.formation.proxibanqueFINAL.presentation.rest.SurveyWebService;
 
@@ -57,7 +62,7 @@ public class ViewController {
 	 * @return ModelAndView la vue index.
 	 */
 	@RequestMapping({ "", "index" })
-	public ModelAndView index(Integer id) {
+	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView();
 		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
 		// conservée en session (grâce à l'annotation sur la classe).
@@ -65,7 +70,7 @@ public class ViewController {
 		mav.setViewName("index");
 
 		// 2. Ajouter les données nécessaires à la vue.
-		mav.addObject("survey", this.surveyWebService.getCurrentSurvey());
+		mav.addObject("survey", this.surveyService.getCurrentSurvey());
 		return mav;
 	}
 
@@ -76,7 +81,7 @@ public class ViewController {
 	 * @return ModelAndView la vue index.
 	 */
 	@RequestMapping("createsurvey")
-	public ModelAndView createsurvey(Integer id) {
+	public ModelAndView createsurvey() {
 		ModelAndView mav = new ModelAndView();
 		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
 		// conservée en session (grâce à l'annotation sur la classe).
@@ -86,6 +91,21 @@ public class ViewController {
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
 	}
+	
+	
+	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
+	public ModelAndView validateForm(LocalDate beginDate, LocalDate supposedFinishDate) {
+		ModelAndView mav = new ModelAndView("eshop");
+		String message = String.format("Un sondage debutant le %s et finissant le %s a bien été enregistré",beginDate, supposedFinishDate
+			);
+		Survey survey = new Survey();
+		survey.setBeginDate(beginDate);
+		survey.setSupposedFinishDate(supposedFinishDate);
+		this.surveyService.create(survey);
+		mav.addObject("message", message);
+		return mav;
+	}
+	
 
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
@@ -94,13 +114,15 @@ public class ViewController {
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
+		mav.addObject("surveys" , this.surveyService.readAll());
 		// 2. Ajouter les données nécessaires à la vue.
 //		mav.addObject("survey", this.surveyService.read(id));
 		return mav;
 	}
 
 	@RequestMapping("stopsurvey")
-	public String stopsurvey(Integer id) {
+	public String stopsurvey(@RequestParam Integer id) {
+		this.surveyService.delete(id);
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
