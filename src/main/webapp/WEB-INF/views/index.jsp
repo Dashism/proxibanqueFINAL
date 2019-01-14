@@ -34,7 +34,7 @@
 	<div class="presentation">
 		<h1>Administration des sondages</h1>
 		<br>
-		<c:if test="${ empty survey }">
+		<c:if test="${ empty survey && not empty survey.endDate }">
 			<h2>Pas de sondage en cours</h2>
 		</c:if>
 		<c:if test="${not empty survey }">
