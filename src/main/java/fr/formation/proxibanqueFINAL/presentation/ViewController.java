@@ -2,6 +2,8 @@ package fr.formation.proxibanqueFINAL.presentation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -120,8 +122,15 @@ public class ViewController {
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
-
+		
+		List<Float> percentages = new ArrayList<>(); 
+		for (Survey survey : this.surveyService.readAll()) {
+			percentages.add(this.surveyService.getOpinionStats(survey));
+		}
+		
 		mav.addObject("surveys" , this.surveyService.readAll());
+		mav.addObject("percentages" , percentages);
+		
 		//mav.addObject("percentages" , this.surveyService.getOpinionStats(survey));
 
 

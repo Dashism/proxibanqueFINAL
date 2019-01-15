@@ -34,17 +34,16 @@
 		<br>
 		<div>
 			<c:forEach var="survey" items="${surveys}">
-				<div class="survey" onmouseenter="enterDiv(event)"
-					onmouseleave="leaveDiv(event)">
-					<h2>Date de début : ${survey.beginDate} Date de fin : ${survey.supposedFinishDate}</h2>
-<<<<<<< HEAD
-					<h2>${percentage }</h2>
-
-=======
-					<h2>${percentage}</h2>
->>>>>>> 37a88227de53528d094b2a4a23d4f4fc5365d4c9
+				<div class="survey">
+					<h2>Date de début : ${survey.beginDate} Date de fin : ${survey.supposedFinishDate}</h2>	
 				</div>
 			</c:forEach>
+				<c:forEach var="percentage" items="${percentages}">
+				<div class="survey">
+					<h2>pourcentage de pouce bleu ${percentage} </h2>	
+					</div>
+			</c:forEach>
+			
 			<a class="btn btn-outline-info" href="index.html">Retour</a>
 		</div>
 	</div>
