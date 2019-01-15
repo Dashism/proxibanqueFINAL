@@ -28,7 +28,8 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/listsurvey.css">
 </head>
-<body background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
+<body
+	background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
 		<h1>Liste des Sondages :</h1>
 		<br>
@@ -36,13 +37,9 @@
 			<c:forEach var="survey" items="${surveys}">
 				<div class="survey" onmouseenter="enterDiv(event)"
 					onmouseleave="leaveDiv(event)">
-					<h2>Date de début : ${survey.beginDate} Date de fin : ${survey.supposedFinishDate}</h2>
-<<<<<<< HEAD
-					<h2>${percentage }</h2>
-
-=======
+					<h2>Date de début : ${survey.beginDate} Date de fin :
+						${survey.supposedFinishDate}</h2>
 					<h2>${percentage}</h2>
->>>>>>> 37a88227de53528d094b2a4a23d4f4fc5365d4c9
 				</div>
 			</c:forEach>
 			<a class="btn btn-outline-info" href="index.html">Retour</a>

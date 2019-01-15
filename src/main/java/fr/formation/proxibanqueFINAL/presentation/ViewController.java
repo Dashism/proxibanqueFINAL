@@ -93,23 +93,11 @@ public class ViewController {
 		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate dt1 = LocalDate.parse(beginDate, dtf);
 		LocalDate dt2 = LocalDate.parse(supposedFinishDate, dtf);
-		
-		
-		//ModelAndView mav = new ModelAndView("createsurvey");
 		Survey survey = new Survey();
 		survey.setBeginDate(dt1);
 		survey.setSupposedFinishDate(dt2);
 		this.surveyService.create(survey);
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
-		// Si l'identifiant est null alors on peut effectuer la création, et si
-		// la création
-		// renvoie vrai alors on met le message de succès, sinon on passe au
-		// else if suivant.
-		// Utilisation des attributs flash de redirection (pas visible dans
-		// l'URL, contrairement aux attributs de redirection normaux).
-		// Le message sera reçu par le nouveau paramètre "message" de la méthode
-		// index (ciblée par la redirection).
-
 	}
 
 	@RequestMapping("listsurvey")
