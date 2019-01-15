@@ -1,7 +1,7 @@
 package fr.formation.proxibanqueFINAL;
 
 /**
- * Constantes de l'application Blog.
+ * Constantes de l'application Proxibanque. Redirections après les actions de validation de formulaire.
  */
 public class ProxibanqueFinalConstants {
 

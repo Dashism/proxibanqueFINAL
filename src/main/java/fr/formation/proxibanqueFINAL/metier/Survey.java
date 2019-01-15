@@ -14,6 +14,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Classe permettant de définir les attributs liés à un sondage, et créer la persistance BDD.
+ * @author Adminl
+ *
+ */
 @Entity
 @Table(name="survey")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "opinions" })

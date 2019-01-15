@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.formation.proxibanqueFINAL.metier.Survey;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
 
+/**
+ * Permet le dialogue via Internet avec l'application Angular, pour un objet Sondage.
+ * @author Adminl
+ *
+ */
 @RestController
 @RequestMapping("/survey")
 @Transactional(readOnly = true)
@@ -52,6 +57,10 @@ public class SurveyWebService {
 //		return this.service.update(survey);
 //	}
 
+	/**
+	 * Appelle la méthode de SurveyService, afin de récupérer le sondage en cours, s'il y en a un.
+	 * @return
+	 */
 	@GetMapping
 	public Survey getCurrentSurvey() {
 		return this.service.getCurrentSurvey();

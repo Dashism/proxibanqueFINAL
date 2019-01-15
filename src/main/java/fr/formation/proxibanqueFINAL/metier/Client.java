@@ -10,14 +10,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Définition d'un POJO (Plain Old Java Object), une classe qui respecte les
- * contraintes suivantes :
- * <ul>
- * <li>Des attributs (fields) uniquement <b>privés</b></li>
- * <li>Un constructeur par défaut (sans arguments)</li>
- * <li>Des accesseurs pour chaque attribut</li>
- * <li style="color:red;">Surtout pas de méthodes de traitement !</li>
- * </ul>
+ * Classe permettant de définir les attributs liés à un client, et créer la persistance dans la BDD.
  */
 @Entity
 @Table(name="client")

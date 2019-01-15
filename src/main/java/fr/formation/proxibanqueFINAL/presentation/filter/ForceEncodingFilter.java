@@ -9,14 +9,25 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * Classe permettant de forcer la configuration de la police en UTF-8.
+ * @author Adminl
+ *
+ */
 public class ForceEncodingFilter implements Filter {
 	
 	private static final String CHARSET = "UTF-8";
 
+	/**
+	 * Initialiser le configuration du Filter
+	 */
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
+	/**
+	 * Forcer la police en UTF-8
+	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {

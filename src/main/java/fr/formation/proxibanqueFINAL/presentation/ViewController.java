@@ -46,7 +46,7 @@ public class ViewController {
 	private static final Logger LOGGER = Logger.getLogger(ViewController.class);
 
 	/**
-	 * Injection d'une dépendance au service des articles.
+	 * L'annotation @Autowired est une spécification d'une variable d'instance à renseigner par Spring.
 	 */
 	@Autowired
 	private ClientService clientService;
@@ -62,6 +62,8 @@ public class ViewController {
 	 * "http://localhost:8080/proxibanqueFINAL/index.html".
 	 * 
 	 * @return ModelAndView la vue index.
+	 * L'annotation @RequestMapping défini la méthode comme capable de répondre sur
+     * les requêtes HTTP commençant par "/index".
 	 */
 	@RequestMapping({ "", "index" })
 	public ModelAndView index() {
@@ -75,8 +77,7 @@ public class ViewController {
 	}
 
 	/**
-	 * Répond sur "http://localhost:8080/proxibanqueFINAL/" et
-	 * "http://localhost:8080/proxibanqueFINAL/index.html".
+	 * Permet la création d'un sondage.
 	 * 
 	 * @return ModelAndView la vue index.
 	 */
@@ -88,6 +89,13 @@ public class ViewController {
 		return mav;
 	}
 
+	/**
+	 * Méthode de validation du formulaire, afin d'envoyer en BDD, et se rediriger sur l'index, 
+	 * ou rester sur la création s'il y a une erreur.
+	 * @param beginDate
+	 * @param supposedFinishDate
+	 * @return
+	 */
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
 	public String validateForm(String beginDate, String supposedFinishDate) {
 		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -104,6 +112,11 @@ public class ViewController {
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
+	/**
+	 * Lister la totalité des sondages, avec le nombre de retours positifs et négatifs. 
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
 		ModelAndView mav = new ModelAndView();
@@ -120,6 +133,11 @@ public class ViewController {
 		return mav;
 	}
 
+	/**
+	 * Permet de fermer un sondage en cours en y ajoutant la date du jour.
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("stopsurvey")
 	public String stopsurvey(@RequestParam Integer id) {
 		Survey survey = new Survey();
@@ -128,6 +146,12 @@ public class ViewController {
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
+	/**
+	 * Permet de récupérer tous les commentaire négatifs et les clients 
+	 * ayant laissé un avis positif, liés à un sondage.
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("details")
 	public ModelAndView details(@RequestParam Integer id) {
 		ModelAndView mav = new ModelAndView();

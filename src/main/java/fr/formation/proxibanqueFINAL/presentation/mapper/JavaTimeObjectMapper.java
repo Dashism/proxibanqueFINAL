@@ -3,6 +3,11 @@ package fr.formation.proxibanqueFINAL.presentation.mapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+/**
+ * Classe Java permettant la conversion des dates LocalDate pour l'application Angular.
+ * @author Adminl
+ *
+ */
 public class JavaTimeObjectMapper extends ObjectMapper {
 
 	private static final long serialVersionUID = 1L;

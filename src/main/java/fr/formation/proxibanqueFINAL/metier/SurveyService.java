@@ -10,8 +10,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import fr.formation.proxibanqueFINAL.persistance.SurveyDao;
-import fr.formation.proxibanqueFINAL.presentation.ViewController;
 
+/**
+ * Appel de la classe abstraite RestService.
+ * @author Adminl
+ *
+ */
 @Service
 public class SurveyService extends RestService<Survey> {
 
@@ -20,11 +24,18 @@ public class SurveyService extends RestService<Survey> {
 	@Autowired
 	private SurveyDao dao;
 
+	/**
+	 * Récupère la dao pour accéder à la BDD.
+	 */
 	@Override
 	protected JpaRepository<Survey, Integer> getDao() {
 		return this.dao;
 	}
 
+	/**
+	 * Récupère le sondage en cours, s'il en existe un.
+	 * @return
+	 */
 	public Survey getCurrentSurvey() {
 		Survey currentSurvey = null;
 		List<Survey> surveys = this.dao.findAll();
@@ -40,6 +51,11 @@ public class SurveyService extends RestService<Survey> {
 
 	}
 
+	/**
+	 * Récupère le nombre d'avis positifs, liés à un sondage.
+	 * @param survey
+	 * @return
+	 */
 	public Integer getPositivOpinionStats(Survey survey) {
 		List<Opinion> opinions = survey.getOpinions();
 		Integer count = 0;
@@ -51,6 +67,11 @@ public class SurveyService extends RestService<Survey> {
 		return count;
 	}
 	
+	/**
+	 * Récupère le nombre d'avis négatifs, liés à un sondage.
+	 * @param survey
+	 * @return
+	 */
 	public Integer getNegativOpinionStats(Survey survey) {
 		List<Opinion> opinions = survey.getOpinions();
 		Integer count = 0;
