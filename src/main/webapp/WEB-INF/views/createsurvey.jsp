@@ -36,14 +36,13 @@
 			<form:form modelAttribute="survey" method="post"
 				action="createsurvey.html" onsubmit="validateForm(event)">
 				<div class="form-group">
-					<label for="beginDate">Date de début :</label>
+					<label for="beginDate">Date de début (yyyy-mm-dd) :</label>
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
 					<form:input id="beginDate" path="beginDate" class="form-control" />
 				</div>
 				<div class="form-group">
-					<label for="supposedFinishDate">Date de fin prévisionnelle
-						:</label>
+					<label for="supposedFinishDate">Date de fin prévisionnelle (yyyy-mm-dd) :</label>
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
 				attribut de l'objet (classe Article) défini dans le modelAttribute du form:form. -->
 					<form:input id="supposedFinishDate" path="supposedFinishDate"
