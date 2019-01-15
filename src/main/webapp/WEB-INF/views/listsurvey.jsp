@@ -33,17 +33,60 @@
 	<div class="presentation">
 		<h1>Liste des Sondages :</h1>
 		<br>
-		<div>
-			<c:forEach var="survey" items="${surveys}">
-				<div class="survey" onmouseenter="enterDiv(event)"
-					onmouseleave="leaveDiv(event)">
-					<h2>Date de début : ${survey.beginDate} Date de fin :
-						${survey.supposedFinishDate}</h2>
-					<h2>${percentage}</h2>
-				</div>
-			</c:forEach>
-			<a class="btn btn-outline-info" href="index.html">Retour</a>
+		<div class="try">
+			<div class="try1">
+				<c:forEach var="survey" items="${surveys}">
+					<table>
+						<tr>
+							<th>Numero du sondage</th>
+							<td>${survey.id}</td>
+						</tr>
+					</table>
+				</c:forEach>
+			</div>
+			<div class="try2">
+				<c:forEach var="survey" items="${surveys}">
+					<table>
+						<tr>
+							<th>Date de début</th>
+							<td>${survey.beginDate}</td>
+						</tr>
+					</table>
+				</c:forEach>
+			</div>
+			<div class="try3">
+				<c:forEach var="survey" items="${surveys}">
+					<table>
+						<tr>
+							<th>Date de fin prévisionnelle</th>
+							<td>${survey.supposedFinishDate}</td>
+						</tr>
+					</table>
+				</c:forEach>
+			</div>
+			<div class="try4">
+				<c:forEach var="Bleu" items="${pouceBleu}">
+					<table>
+						<tr>
+							<th>Nombre d'avis positif</th>
+							<td>${Bleu}</td>
+						</tr>
+					</table>
+				</c:forEach>
+			</div>
+			<div class="try5">
+				<c:forEach var="Rouge" items="${pouceRouge}">
+					<table>
+						<tr>
+							<th>Nombre d'avis negatif</th>
+							<td>${Rouge}</td>
+						</tr>
+					</table>
+				</c:forEach>
+			</div>
 		</div>
+		<br>
+		<a class="btn btn-outline-info" href="index.html">Retour</a>
 	</div>
 </body>
 </html>

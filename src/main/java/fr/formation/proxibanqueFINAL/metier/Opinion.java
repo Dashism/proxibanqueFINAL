@@ -33,7 +33,6 @@ public class Opinion {
 	private Client client;
 	
 	@ManyToOne
-	@JoinColumn(name="id_survey", referencedColumnName="id")
 	private Survey survey;
 
 	/**

@@ -14,7 +14,7 @@ import fr.formation.proxibanqueFINAL.presentation.ViewController;
 
 @Service
 public class SurveyService extends RestService<Survey> {
-	
+
 	private static final Logger LOGGER = Logger.getLogger(SurveyService.class);
 
 	@Autowired
@@ -24,32 +24,44 @@ public class SurveyService extends RestService<Survey> {
 	protected JpaRepository<Survey, Integer> getDao() {
 		return this.dao;
 	}
-	
+
 	public Survey getCurrentSurvey() {
 		Survey currentSurvey = null;
 		List<Survey> surveys = this.dao.findAll();
 		LOGGER.debug(this.dao.findAll());
 		for (Survey survey : surveys) {
-			if (survey.getEndDate() == null && survey.getBeginDate().isBefore(LocalDate.now()) && survey.getSupposedFinishDate().isAfter(LocalDate.now())) {
+			if (survey.getEndDate() == null && survey.getBeginDate().isBefore(LocalDate.now())
+					&& survey.getSupposedFinishDate().isAfter(LocalDate.now())) {
 				currentSurvey = survey;
 			}
 		}
-
 		Hibernate.initialize(currentSurvey);
 		return currentSurvey;
 
 	}
-	
-	public float getOpinionStats(Survey survey) {
+
+	public Integer getPositivOpinionStats(Survey survey) {
 		List<Opinion> opinions = survey.getOpinions();
 		Integer count = 0;
 		for (Opinion opinion : opinions) {
-			if (opinion.getIsThumbs().equals("1") ) {
+			if (opinion.getIsThumbs().equals("1")) {
 				count++;
 			}
 		}
-		float stats = (float) count /(float) opinions.size();
-		return stats;
+		return count;
 	}
+	
+	public Integer getNegativOpinionStats(Survey survey) {
+		List<Opinion> opinions = survey.getOpinions();
+		Integer count = 0;
+		for (Opinion opinion : opinions) {
+			if (opinion.getIsThumbs().equals("0")) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	
 
 }

@@ -33,8 +33,8 @@
 	<div class="presentation">
 		<h1>Créer un sondage</h1>
 		<div class="presentation2">
-			<form:form modelAttribute="survey" method="post" action="createsurvey.html"
-				onsubmit="validateForm(event)">
+			<form:form modelAttribute="survey" method="post"
+				action="createsurvey.html" onsubmit="validateForm(event)">
 				<div class="form-group">
 					<label for="beginDate">Date de début :</label>
 					<!-- Utilisation d'un tag Spring pour lier un champ de saisie avec un 
@@ -49,11 +49,11 @@
 					<form:input id="supposedFinishDate" path="supposedFinishDate"
 						class="form-control"></form:input>
 				</div>
-						<button>Valider</button>
-				<a class="btn btn-outline-success">Valider le nouveau sondage</a>
-			<a class="btn btn-outline-info" href="index.html">Retour</a>
+				<button class="btn btn-outline-success">Valider le nouveau sondage</button>
+				<a class="btn btn-outline-info" href="index.html">Retour</a>
 			</form:form>
 		</div>
+		<h2> ${message}</h2>
 	</div>
 </body>
 </html>

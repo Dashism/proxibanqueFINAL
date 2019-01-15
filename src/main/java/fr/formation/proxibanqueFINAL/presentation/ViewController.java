@@ -2,6 +2,8 @@ package fr.formation.proxibanqueFINAL.presentation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
@@ -89,33 +92,39 @@ public class ViewController {
 	}
 
 	@RequestMapping(path = "createsurvey", method = RequestMethod.POST)
-	public String validateForm(String beginDate, String supposedFinishDate ) {
+	public String validateForm(String beginDate, String supposedFinishDate) {
 		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate dt1 = LocalDate.parse(beginDate, dtf);
-		LocalDate dt2 = LocalDate.parse(supposedFinishDate, dtf);
-		Survey survey = new Survey();
-		survey.setBeginDate(dt1);
-		survey.setSupposedFinishDate(dt2);
-		this.surveyService.create(survey);
+		try {
+			LocalDate dt1 = LocalDate.parse(beginDate, dtf);
+			LocalDate dt2 = LocalDate.parse(supposedFinishDate, dtf);
+			Survey survey = new Survey();
+			survey.setBeginDate(dt1);
+			survey.setSupposedFinishDate(dt2);
+			this.surveyService.create(survey);
+		} catch (java.time.format.DateTimeParseException e) {
+			return ProxibanqueFinalConstants.REDIRECT_TO_CREATE;
+		}
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
 		ModelAndView mav = new ModelAndView();
-		//Survey survey = new Survey();
+		// Survey survey = new Survey();
 		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
 		// conservée en session (grâce à l'annotation sur la classe).
 		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
+		List<Integer> positiv = new ArrayList<>();
+		List<Integer> negativ = new ArrayList<>();
+		for (Survey survey : this.surveyService.readAll()) {
+			positiv.add(this.surveyService.getPositivOpinionStats(survey));
+			negativ.add(this.surveyService.getNegativOpinionStats(survey));
+		}
 
-		mav.addObject("surveys" , this.surveyService.readAll());
-		//mav.addObject("percentages" , this.surveyService.getOpinionStats(survey));
-
-
-
-		// 2. Ajouter les données nécessaires à la vue.
-//		mav.addObject("survey", this.surveyService.read(id));
+		mav.addObject("pouceBleu", positiv);
+		mav.addObject("pouceRouge", negativ);
+		mav.addObject("surveys", this.surveyService.readAll());
 		return mav;
 	}
 

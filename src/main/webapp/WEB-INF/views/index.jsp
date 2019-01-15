@@ -57,7 +57,7 @@
 			<br>
 		</c:if>
 		<a class="btn btn-outline-primary"
-			href="listsurvey.html?id=${survey.id}">Visualiser les retours des
+			href="listsurvey.html">Visualiser les retours des
 			sondages</a> <br>
 	</div>
 </body>
