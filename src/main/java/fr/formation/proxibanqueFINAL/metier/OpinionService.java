@@ -19,6 +19,6 @@ public class OpinionService extends RestService<Opinion> {
 		return this.dao;
 	}
 	
-
-	}
+	
+}
 

@@ -26,75 +26,46 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/listsurvey.css">
+<link rel="stylesheet" href="css/details.css">
 </head>
 <body
 	background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
 	<div class="presentation">
-		<h1>Liste des Sondages :</h1>
+		<h1>Détails : Liste des clients et commentaires négatifs</h1>
 		<br>
 		<div class="try">
 			<div class="try1">
-				<c:forEach var="survey" items="${surveys}">
+				<c:forEach var="client" items="${positivClients}">
 					<table>
 						<tr>
-							<th>Numero du sondage</th>
-							<td>${survey.id}</td>
+							<th>Nom</th>
+							<td>${client.lastname}</td>
 						</tr>
 					</table>
 				</c:forEach>
 			</div>
 			<div class="try2">
-				<c:forEach var="survey" items="${surveys}">
+				<c:forEach var="client" items="${positivClients}">
 					<table>
 						<tr>
-							<th>Date de début</th>
-							<td>${survey.beginDate}</td>
+							<th>Prenom</th>
+							<td>${client.firstname}</td>
 						</tr>
 					</table>
 				</c:forEach>
 			</div>
 			<div class="try3">
-				<c:forEach var="survey" items="${surveys}">
+				<c:forEach var="opinion" items="${negativOpinions}">
 					<table>
 						<tr>
-							<th>Date de fin prévisionnelle</th>
-							<td>${survey.supposedFinishDate}</td>
-						</tr>
-					</table>
-				</c:forEach>
-			</div>
-			<div class="try4">
-				<c:forEach var="Bleu" items="${pouceBleu}">
-					<table>
-						<tr>
-							<th>Nombre d'avis positif</th>
-							<td>${Bleu}</td>
-						</tr>
-					</table>
-				</c:forEach>
-			</div>
-			<div class="try5">
-				<c:forEach var="Rouge" items="${pouceRouge}">
-					<table>
-						<tr>
-							<th>Nombre d'avis negatif</th>
-							<td>${Rouge}</td>
-						</tr>
-					</table>
-				</c:forEach>
-			</div>
-			<div class="try6">
-				<c:forEach var="survey" items="${surveys}">
-					<table>
-						<tr>
-							<td><a href="details.html?id=${survey.id}">Détails</a></td>
+							<th>Commentaire</th>
+							<td>${opinion.commentary}</td>
 						</tr>
 					</table>
 				</c:forEach>
 			</div>
 		</div>
-		<br> <a class="btn btn-outline-info" href="index.html">Retour</a>
+		<br> <a class="btn btn-outline-info" href="listsurvey.html">Retour</a>
 	</div>
 </body>
 </html>

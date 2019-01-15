@@ -33,10 +33,10 @@ public class Client {
 	private String serialNumber;
 	
 	@Column
-	private String lastName;
+	private String lastname;
 	
 	@Column
-	private String firstame;
+	private String firstname;
 	
 	@Column
 	private String phone;
@@ -44,90 +44,52 @@ public class Client {
 	@Column
 	private String email;
 
-	/**
-	 * @return the id
-	 */
 	public Integer getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the serialNumber
-	 */
 	public String getSerialNumber() {
 		return serialNumber;
 	}
 
-	/**
-	 * @param serialNumber the serialNumber to set
-	 */
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	/**
-	 * @return the firstame
-	 */
-	public String getFirstame() {
-		return firstame;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	/**
-	 * @param firstame the firstame to set
-	 */
-	public void setFirstame(String firstame) {
-		this.firstame = firstame;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	/**
-	 * @return the phone
-	 */
 	public String getPhone() {
 		return phone;
 	}
 
-	/**
-	 * @param phone the phone to set
-	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 	
 }

@@ -8,9 +8,7 @@ body {
 }
 
 table, th, td {
-	background-color: #E0FFFF;
-	border: 1px solid black;
-	border-collapse: collapse;
+	font-size: 35px
 }
 
 th, td {
@@ -19,33 +17,24 @@ th, td {
 }
 
 div.try {
-	width: 1600px;
-	margin: auto; display : flex;
+	width: 1920px;
+	margin: auto;
+	display: flex;
 	align-content: stretch;
 	justify-content: space-evenly;
-	display: flex;
 }
 
 div.try1 {
-	width: 380px;
+	width: 300px;
+	color: #7FFF00;
 }
 
 div.try2 {
-	width: 425px;
+	width: 300px;
+	color: #7FFF00;
 }
 
 div.try3 {
-	width: 550px;
-}
-
-div.try4 {
-	width: 400px;
-}
-
-div.try5 {
-	width: 400px;
-}
-
-div.try6 {
-	width: 400px;
+	width: 1000px;
+	color: #DC143C;
 }

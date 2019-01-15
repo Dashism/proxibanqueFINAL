@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
-  `firstame` varchar(255) DEFAULT NULL,
-  `lastName` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `serialNumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)

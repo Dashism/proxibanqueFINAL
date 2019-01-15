@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.formation.proxibanqueFINAL.ProxibanqueFinalConstants;
+import fr.formation.proxibanqueFINAL.metier.Client;
 import fr.formation.proxibanqueFINAL.metier.ClientService;
+import fr.formation.proxibanqueFINAL.metier.Opinion;
 import fr.formation.proxibanqueFINAL.metier.OpinionService;
 import fr.formation.proxibanqueFINAL.metier.Survey;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
@@ -65,11 +66,7 @@ public class ViewController {
 	@RequestMapping({ "", "index" })
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView();
-		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
-		// conservée en session (grâce à l'annotation sur la classe).
-		// 1. Configurer la vue.
 		mav.setViewName("index");
-		// 2. Ajouter les données nécessaires à la vue.
 		Survey survey = new Survey();
 		survey = this.surveyService.getCurrentSurvey();
 		Hibernate.initialize(survey);
@@ -110,10 +107,6 @@ public class ViewController {
 	@RequestMapping("listsurvey")
 	public ModelAndView listsurvey(Integer id) {
 		ModelAndView mav = new ModelAndView();
-		// Survey survey = new Survey();
-		// Il suffit d'ajouter la clé "author" au model pour que la valeur soit
-		// conservée en session (grâce à l'annotation sur la classe).
-		// 1. Configurer la vue.
 		mav.setViewName("listsurvey");
 		List<Integer> positiv = new ArrayList<>();
 		List<Integer> negativ = new ArrayList<>();
@@ -121,7 +114,6 @@ public class ViewController {
 			positiv.add(this.surveyService.getPositivOpinionStats(survey));
 			negativ.add(this.surveyService.getNegativOpinionStats(survey));
 		}
-
 		mav.addObject("pouceBleu", positiv);
 		mav.addObject("pouceRouge", negativ);
 		mav.addObject("surveys", this.surveyService.readAll());
@@ -136,4 +128,28 @@ public class ViewController {
 		return ProxibanqueFinalConstants.REDIRECT_TO_INDEX;
 	}
 
+	@RequestMapping("details")
+	public ModelAndView details(@RequestParam Integer id) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("details");
+		Survey survey =  this.surveyService.read(id);
+		List<Opinion> opinions = survey.getOpinions();
+		List<Opinion> negativOpinions = new ArrayList<>();
+		List<Opinion> positivOpinions = new ArrayList<>();
+		List<Client> positivClients = new ArrayList<>();
+		for(Opinion opinion : opinions) {
+			if(opinion.getCommentary() != null) {
+				negativOpinions.add(opinion);
+			} else {
+				positivOpinions.add(opinion);
+			}
+		}
+		for(Opinion opinion : positivOpinions) {
+			positivClients.add(opinion.getClient());
+		}
+		mav.addObject("negativOpinions", negativOpinions);
+		mav.addObject("positivClients", positivClients);
+		return mav;
+	}
+	
 }

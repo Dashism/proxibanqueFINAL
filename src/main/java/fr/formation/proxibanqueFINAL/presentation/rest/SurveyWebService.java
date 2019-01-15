@@ -15,7 +15,7 @@ import fr.formation.proxibanqueFINAL.metier.Survey;
 import fr.formation.proxibanqueFINAL.metier.SurveyService;
 
 @RestController
-@RequestMapping("/Survey")
+@RequestMapping("/survey")
 @Transactional(readOnly = true)
 //@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080"})
 public class SurveyWebService {
@@ -52,10 +52,9 @@ public class SurveyWebService {
 //		return this.service.update(survey);
 //	}
 
-	@GetMapping("/{beginDate}")
-	public Survey getCurrentSurvey(@PathVariable LocalDate beginDate) {
+	@GetMapping
+	public Survey getCurrentSurvey() {
 		return this.service.getCurrentSurvey();
-
 	}
 	
 //	@GetMapping("/{id}")
