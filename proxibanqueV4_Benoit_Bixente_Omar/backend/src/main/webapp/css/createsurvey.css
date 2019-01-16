@@ -1,0 +1,13 @@
+div.presentation {
+	text-align: center;
+}
+
+div.presentation2 {
+	text-align: center;
+	width: 300px;
+	margin: auto;
+}
+
+body {
+	background-size: cover;
+}

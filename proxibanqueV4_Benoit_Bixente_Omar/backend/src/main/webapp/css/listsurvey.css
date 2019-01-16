@@ -1,0 +1,53 @@
+div.presentation {
+	text-align: center;
+	width: 
+	margin: auto;
+}
+
+body {
+	background-size: cover;
+	background-repeat: no repeat;
+}
+
+table, th, td {
+	background-color: #E0FFFF;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+}
+
+div.try {
+	width: 1600px;
+	margin: auto; display : flex;
+	align-content: stretch;
+	justify-content: space-evenly;
+	display: flex;
+}
+
+div.try1 {
+	width: 380px;
+}
+
+div.try2 {
+	width: 425px;
+}
+
+div.try3 {
+	width: 550px;
+}
+
+div.try4 {
+	width: 400px;
+}
+
+div.try5 {
+	width: 400px;
+}
+
+div.try6 {
+	width: 100px;
+}
