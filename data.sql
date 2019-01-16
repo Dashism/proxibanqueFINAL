@@ -31,7 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `opinion` WRITE;
 /*!40000 ALTER TABLE `opinion` DISABLE KEYS */;
-INSERT INTO `opinion` VALUES (3,NULL,'1',2,1),(4,NULL,'1',3,2),(5,NULL,'1',6,3),(6,NULL,'1',7,3),(7,NULL,'1',10,5),(8,'Je n\'en ai pas besoin','0',4,2),(9,'Je ne suis pas intéresse','0',8,3),(10,'Je possède deja une assurance auto','0',1,1),(11,'Possède déja une assurance auto','0',9,5),(12,'Quels sont les avantages','0',5,2);
+INSERT INTO `opinion` VALUES (3,NULL,'1',2,1),(4,NULL,'1',3,2),(5,NULL,'1',6,3),(6,'Test','0',NULL,NULL),(7,NULL,'1',10,5),(8,'Je n\'en ai pas besoin','0',4,2),(9,'Je ne suis pas intéresse','0',8,3),(10,'Je possède deja une assurance auto','0',1,1),(11,'Possède déja une assurance auto','0',9,5),(12,'Quels sont les avantages','0',5,2),(13,'sqfuodhsdfouihsfgoihreqgouheqgouiqhergrheqgiluZRH<','0',NULL,NULL),(14,'Pouraaalalala','0',NULL,NULL),(15,'nique ta mere','0',NULL,NULL),(16,'sqfuodhsdfouihsfgoihreqgouheqgouiqhergrheqgiluZRH<','0',NULL,NULL),(17,NULL,'0',NULL,NULL),(18,NULL,'0',NULL,NULL),(19,NULL,'0',NULL,NULL),(20,NULL,'0',NULL,NULL),(21,NULL,'0',NULL,NULL),(22,NULL,'0',NULL,NULL),(23,NULL,'0',NULL,NULL),(24,NULL,'0',NULL,NULL),(25,NULL,'0',NULL,NULL),(26,NULL,'0',NULL,NULL),(27,'k:ok','0',NULL,NULL),(28,'ttt','0',NULL,NULL),(29,NULL,'0',NULL,NULL),(30,'nique ta mere','0',NULL,NULL),(31,'nique ta mere','0',NULL,NULL),(32,'k:ok','0',NULL,NULL);
 /*!40000 ALTER TABLE `opinion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41,17 +41,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `survey` WRITE;
 /*!40000 ALTER TABLE `survey` DISABLE KEYS */;
-INSERT INTO `survey` VALUES (1,'2018-08-20','2018-09-22','2018-09-20'),(2,'2018-09-23','2018-10-25','2018-10-23'),(3,'2018-10-26','2018-11-28','2018-11-26'),(4,'2018-11-29','2018-12-30','2018-12-29'),(5,'2019-01-02',NULL,'2019-02-02');
+INSERT INTO `survey` VALUES (1,'2018-08-20','2018-09-22','2018-09-20'),(2,'2018-09-23','2018-10-25','2018-10-23'),(3,'2018-10-26','2018-11-28','2018-11-26'),(4,'2018-11-29','2018-12-30','2018-12-29'),(5,'2019-01-02','2019-01-15','2019-02-02'),(6,'2017-01-01','2019-01-15','2020-01-01'),(7,'2017-01-01','2019-01-16','2020-01-01'),(8,'2017-01-01',NULL,'2020-12-30');
 /*!40000 ALTER TABLE `survey` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `survey_opinion`
---
-
-LOCK TABLES `survey_opinion` WRITE;
-/*!40000 ALTER TABLE `survey_opinion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `survey_opinion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -63,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-14 15:38:53
+-- Dump completed on 2019-01-16  9:17:43

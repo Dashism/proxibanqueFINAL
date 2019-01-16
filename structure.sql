@@ -43,15 +43,15 @@ DROP TABLE IF EXISTS `opinion`;
 CREATE TABLE `opinion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `commentary` varchar(255) DEFAULT NULL,
-  `isThumbs` varchar(1) DEFAULT NULL,
+  `isThumbs` varchar(255) DEFAULT NULL,
   `id_client` int(11) DEFAULT NULL,
-  `id_survey` int(11) DEFAULT NULL,
+  `survey_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKloqd75is5q5rm7arf3k6lfecb` (`id_client`),
-  KEY `FKmciwcp7oqq5lh9bi9srbbevg8` (`id_survey`),
+  KEY `FKpqllfrlvyy1i0pxx0k25ksct9` (`survey_id`),
   CONSTRAINT `FKloqd75is5q5rm7arf3k6lfecb` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
-  CONSTRAINT `FKmciwcp7oqq5lh9bi9srbbevg8` FOREIGN KEY (`id_survey`) REFERENCES `survey` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `FKpqllfrlvyy1i0pxx0k25ksct9` FOREIGN KEY (`survey_id`) REFERENCES `survey` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,24 +67,7 @@ CREATE TABLE `survey` (
   `endDate` date DEFAULT NULL,
   `supposedFinishDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `survey_opinion`
---
-
-DROP TABLE IF EXISTS `survey_opinion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `survey_opinion` (
-  `Survey_id` int(11) NOT NULL,
-  `opinions_id` int(11) NOT NULL,
-  UNIQUE KEY `UK_3lrqc922c7fmmlnkynvvecujr` (`opinions_id`),
-  KEY `FKhrn9e0r524d5dji5dhj697vkd` (`Survey_id`),
-  CONSTRAINT `FKf216lse3fpsx2app76ngusgnt` FOREIGN KEY (`opinions_id`) REFERENCES `opinion` (`id`),
-  CONSTRAINT `FKhrn9e0r524d5dji5dhj697vkd` FOREIGN KEY (`Survey_id`) REFERENCES `survey` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -96,4 +79,4 @@ CREATE TABLE `survey_opinion` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-14 15:39:12
+-- Dump completed on 2019-01-16  9:17:55
