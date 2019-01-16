@@ -8,7 +8,7 @@
 <!-- Cette balise gère les méta-données de la page, 
 	toute les caractéristiques propres à la page. -->
 <meta charset="ISO-8859-1">
-<title>listsurvey</title>
+<title>Résumé</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
