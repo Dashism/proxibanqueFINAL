@@ -1,5 +1,7 @@
 div.presentation {
 	text-align: center;
+	width: 
+	margin: auto;
 }
 
 body {
@@ -47,5 +49,5 @@ div.try5 {
 }
 
 div.try6 {
-	width: 400px;
+	width: 100px;
 }
