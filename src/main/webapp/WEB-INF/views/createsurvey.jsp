@@ -13,7 +13,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/admin.css">
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -28,8 +27,9 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/createsurvey.css">
 </head>
+<c:url var="background" value="/Image/background.jpg"/>
 <body
-	background="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2014/07/01/101805152-462861775.jpg?v=1537996617">
+	background="${background}">
 	<div class="presentation">
 		<h1>Créer un sondage</h1>
 		<div class="presentation2">

@@ -162,9 +162,9 @@ public class ViewController {
 		List<Opinion> positivOpinions = new ArrayList<>();
 		List<Client> positivClients = new ArrayList<>();
 		for(Opinion opinion : opinions) {
-			if(opinion.getCommentary() != null) {
+			if(opinion.getIsThumbs().equals("0") && opinion.getCommentary() != null) {
 				negativOpinions.add(opinion);
-			} else {
+			} else if (opinion.getIsThumbs().equals("1") && opinion.getClient() != null) {
 				positivOpinions.add(opinion);
 			}
 		}
